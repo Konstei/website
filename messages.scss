@@ -1,0 +1,629 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+$bg-color: #222327;
+$main-color: #838692/*29fd53*/;
+$text-color: #a3a6af;
+$icon-color: #222327;
+$navbar-color: #ffffff;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    
+    body {
+        background-color: darken($bg-color, 3%);
+        height: 100vh;
+        width: 100vw;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        
+        
+        .page {
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: calc(100vh - (100vh / 6.7)) calc(100vh / 6.7);
+            
+            
+            .upper-page {
+                grid-row: 1 / span 1;
+                display: grid;
+                grid-template-columns: 1fr 4fr;
+                
+                .contacts-section {
+                    grid-column: 1 / span 1;
+                    height: 100vh;
+                    width: calc(100vw / 5);
+                    border-style: solid solid solid none;
+                    border-width: calc(100vh / 200);
+                    border-color: darken($bg-color, 8%);
+                    border-bottom-right-radius: calc(100vh / 70.4);
+                    background-color: darken($bg-color, 5%);
+                    display: grid;
+                    grid-template-rows: calc((100vh - (100vh / 6.7)) / 8) calc(100vh - ((100vh - (100vh / 6.7)) / 8));
+                    grid-template-columns: auto;
+    
+                    .contact-header {
+                        grid-row: 1 / span 1;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: calc(100vh / 44);
+                        background-color: darken($bg-color, 6%);
+                        color: darken($text-color, 12%);
+                        border-style: none none solid none;
+                        border-color: darken($bg-color, 8%);
+                    }
+                    
+                    .contact-list {
+                        grid-row: 2 / span 1;
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+                        height: calc(100vh - ((100vh - (100vh / 6.7)) / 8));
+    
+                        .contact {
+                            position: relative;
+                            display: inline-block;
+                            width: 100%;
+                            height: 64px;
+                            font-size: calc(100vh / 52.148);
+                            transition: 0.2s;
+                            padding: calc(100vh / 32) 0 calc(100vh / 32) calc(100vw / 34.15);
+                            outline: none;
+                            border: none;
+                            border-radius: calc(100vh / 70.4);
+                            background-color: darken($bg-color, 5%);
+                            color: $text-color;
+                            text-align: left;
+                            cursor: pointer;
+
+
+                            .contact-name-btn {
+                                display: inline-block;
+                                margin: 0;
+                            }
+
+                            .delete-contact {
+                                display: none;
+                                float: right;
+                                justify-content: center;
+                                align-items: center;
+                                width: 15px;
+                                height: 15px;
+                                margin-right: 10px;
+                                border-radius: 50%;
+                                background-color: transparent;
+                                user-select: none;
+                            }
+                            .delete-contact:hover {
+                                background-color: lighten($bg-color, 15%);
+                            }
+                        }
+                        .contact:hover {
+                            transition: 0.2s;
+                            background-color: $bg-color;
+                        }
+                        .focused {
+                            transition: 0.2s;
+                            background-color: lighten($bg-color, 5%);
+                        }
+                        .focused:hover {
+                            background-color: lighten($bg-color, 5%);
+                        }
+                    }
+                    .contact-list::-webkit-scrollbar {
+                        width: calc(100vw / 136.6);
+                    }
+                    .contact-list::-webkit-scrollbar-track {
+                        height: calc(100vh - (100vh / 70.4));
+                        background-color: transparent;
+                    }
+                    .contact-list::-webkit-scrollbar-thumb {
+                        background-color: darken($bg-color, 2%);
+                    }
+                    .contact-list::-webkit-scrollbar-thumb:hover {
+                        background-color: $bg-color;
+                    }
+                }
+    
+                .contact-content {
+                    grid-column: 2 / span 1;
+                    height: calc(100vh - (100vh / 6.7));
+                    float: left;
+                    background-color: transparent;
+                    border-style: solid solid solid none;
+                    border-color: darken($bg-color, 8%);
+                    display: grid;
+                    grid-template-rows: calc((100vh - (100vh / 6.7)) / 8)   calc((100vh - (100vh / 6.7)) - ((100vh - (100vh / 6.7)) / 8) - (100vh / 14))   calc(100vh / 14);
+                    
+                    .contact-name {
+                        grid-row: 1 / span 1;
+                        height: calc((100vh - (100vh / 6.7)) / 8);
+                        position: relative;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding-left: calc(100vw / 113.8);
+                        background-color: darken($bg-color, 3.5%);
+                        font-size: calc(100vh / 39);
+                        color: darken($text-color, 12%);
+                        border-style: none none solid none;
+                        border-color: inherit;
+                    }
+                    
+                    .messages {
+                        display: flex;
+                        flex-direction: column-reverse;
+                        padding: calc(100vh / 140.8) 0 calc(100vh / 140.8) 0;
+                        grid-row: 2 / span 1;
+                        height: calc((100vh - (100vh / 6.7)) - ((100vh - (100vh / 6.7)) / 8) - (100vh / 14));
+                        max-height: calc((100vh - (100vh / 6.7)) - ((100vh - (100vh / 6.7)) / 8) - (100vh / 14));
+                        background-color: darken($bg-color, 2%);
+                        border-style: none none solid none;
+                        border-color: darken($bg-color, 8%);
+                        font-size: calc(100vh / 44);
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+
+                        .some-message {
+                            display: flex;
+                            flex-direction: column;
+                            width: calc(((100vw / 5) * 4) - (100vw / 111));
+                            height: auto;
+
+                            .recieved-message {
+                                position: relative;
+                                align-self: flex-start;
+                                width: auto;
+                                margin: calc(100vh / 352) 0 calc(100vh / 352) calc(100vw / 273.2);
+                                padding: calc(100vh / 352) calc(100vw / 136.6);
+                                border-radius: calc(100vh / 35.2);
+                                background-color: darken($bg-color, 6%);
+                                color: $text-color;
+                                max-width: calc(100vw / 3.64);
+                                overflow-wrap: break-word;
+                            }
+                            
+                            .sent-message {
+                                position: relative;
+                                align-self: flex-end;
+                                width: auto;
+                                margin: calc(100vh / 352) calc(100vw / 273.2) calc(100vh / 352) 0;
+                                padding: calc(100vh / 352) calc(100vw / 136.6);
+                                border-radius: calc(100vh / 35.2);
+                                background-color: darken($bg-color, 5%);
+                                color: $text-color;
+                                max-width: calc(100vw / 3.64);
+                                overflow-wrap: break-word;
+                            }
+                        }
+                    }
+                    .messages::-webkit-scrollbar {
+                        width: calc(100vw / 111);
+                    }
+                    .messages::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+                    .messages::-webkit-scrollbar-thumb {
+                        background-color: lighten($bg-color, 3%);
+                    }
+                    .messages::-webkit-scrollbar-thumb:hover {
+                        background-color: lighten($bg-color, 5%);
+                    }
+
+                    .message-bar {
+                        grid-row: 3 / span 1;
+                        width: calc(100vw - (100vw / 5));
+                        height: calc(100vh / 16);
+                        position: relative;
+                        float: left;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        background-color: darken($bg-color, 6%);
+
+                        .upload-embed {
+                            display: block;
+                            position: absolute;
+                            width: calc(100vw / 10000000);
+                            height: calc(100vw / 46);
+                            opacity: 1;
+                        }
+
+                        .embed-files {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: calc(100vw / 46);
+                            height: calc(100vw / 46);
+                            margin-left: calc(100vw / 136.6);
+                            margin-bottom: calc(100vh / 352);
+                            border-radius: 50%;
+                            background-color: darken($main-color, 5%);
+                            font-weight: bold;
+                            font-size: calc(100vh / 29.3);
+                            color: darken($bg-color, 6%);
+                            cursor: pointer;
+                        }
+                        .embed-files:hover {
+                            background-color: $main-color;
+                        }
+                        .upload-embed:hover + .embed-files {
+                            background-color: $main-color;
+                        }
+
+                        .send-message-box {
+                            width: calc(100vw / 1.4);
+                            height: calc(100vh / 22);
+                            outline: none;
+                            margin-left: calc(100vw / 68.3);
+                            padding: 0 0 calc(100vh / 352) calc(100vw / 136.6);
+                            transition: 0.2s;
+                            background-color: darken($bg-color, 3.5%);
+                            border-style: solid;
+                            border-width: calc(100vw / 683);
+                            border-radius: calc(100vh / 140.8);
+                            border-color: darken($bg-color, 8%);
+                            color: $text-color;
+                            font-size: calc(100vh / 46.93);
+                            overflow-wrap: break-word;
+                        }
+                        .send-message-box:hover {
+                            transition: 0.2s;
+                            background-color: darken($bg-color, 2%);
+                        }
+                        .send-message-box:focus {
+                            transition: 0.2s;
+                            background-color: darken($bg-color, 1%);
+                        }
+                        
+                        .send-message-btn {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: calc(100vw / 44);
+                            height: calc(100vw / 44);
+                            margin-left: calc(100vw / 100);
+                            padding-left: calc(100vw / 460);
+                            border-radius: 50%;
+                            background-color: darken($main-color, 5%);
+                            font-weight: bold;
+                            font-size: calc(100vh / 35);
+                            color: darken($bg-color, 6%);
+                            cursor: pointer;
+                        }
+                        .send-message-btn:hover {
+                            background-color: $main-color;
+                        }
+                    }
+                }
+            }
+    
+            
+            .lower-page {
+                grid-row: 2 / span 1;
+                height: calc(100vh / 6.7);
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+
+                .remove-friend {
+                    grid-column: 1 / span 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: calc(100vw / 5);
+                    
+                    .remove-friend-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: calc(100vw / 6);
+                        height: calc(100vh / 9);
+                        background-color: darken($bg-color, 3%);
+                        border: calc(100vh / 117) solid darken($bg-color, 7%);
+                        border-radius: calc(100vh / 70.4);
+                        user-select: none;
+                        cursor: pointer;
+                    }
+                }
+    
+    
+                .navbar-flexbox{
+                    grid-column: 2 / span 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: center;
+    
+                    .navigation {
+                        grid-column: 2 / span 1;
+                        position: relative;
+                        width: calc(100vw / 3.4);
+                        height: calc(100vh / 10);
+                        background: $navbar-color;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: calc(100vh / 70.4);
+                        
+                        ul {
+                            display: flex;
+                            width: calc(100vw / 3.9);
+                            
+                            li {
+                                position: relative;
+                                list-style: none;
+                                width: calc(100vw / 19.5);
+                                height: calc(100vh / 10);
+                                z-index: 1;
+                                
+                                div {
+                                    position: relative;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    flex-direction: column;
+                                    width: 100%;
+                                    text-align: center;
+                                    font-weight: 500;
+                                    
+                                    .icon {
+                                        position: relative;
+                                        display: block;
+                                        line-height: calc(100vh / 9.38);
+                                        font-size: calc(100vh / 29.3);
+                                        text-align: center;
+                                        transition: 0.5s;
+                                        color: $icon-color;
+                                    }
+                                    
+                                    .text {
+                                        position: absolute;
+                                        color: $icon-color;
+                                        font-weight: 400;
+                                        font-size: calc(100vh / 58.6);
+                                        letter-spacing: calc(100vw / 1707.5);
+                                        transition: 0.5s;
+                                        opacity: 0;
+                                        transform: translateY(calc(100vh / 35.2));
+                                        // user-select: none;
+                                    }
+                                }
+                                div:hover {
+                                    cursor: pointer;
+                                }
+                            }
+                    
+                            li.active {
+                                div {
+                                    .icon {
+                                        transform: translateY(calc(100vh / -22));
+                                    }
+                                    
+                                    .text {
+                                        opacity: 1;
+                                        transform: translateY(calc(100vh / 64));
+                                    }
+                                }
+                            }
+                            
+                            li:nth-child(1).active ~ .indicator {
+                                transform: translateX(calc((100vw / 19.514) * 0));
+                            }
+                            li:nth-child(2).active ~ .indicator {
+                                transform: translateX(calc((100vw / 19.514) * 1));
+                            }
+                            li:nth-child(3).active ~ .indicator {
+                                transform: translateX(calc((100vw / 19.514) * 2));
+                            }
+                            li:nth-child(4).active ~ .indicator {
+                                transform: translateX(calc((100vw / 19.514) * 3));
+                            }
+                            li:nth-child(5).active ~ .indicator {
+                                transform: translateX(calc((100vw / 19.514) * 4));
+                            }
+                            .indicator {
+                                position: absolute;
+                                top: -50%;
+                                width: calc(100vw / 19.5);
+                                height: calc(100vh / 10);
+                                background: $main-color;
+                                border-radius: 50%;
+                                border: calc(100vh / 117.3) solid darken($bg-color, 3%);
+                                transition: 0.5s;
+                            }
+                            .indicator::before {
+                                content: '';
+                                position: absolute;
+                                top: 48%;
+                                right: calc(100vw / 22.76);
+                                width: calc(100vw / 68.3);
+                                height: calc(100vh / 35.2);
+                                background: transparent;
+                                border-top-right-radius: calc(100vh / 35.2);
+                                box-shadow: calc(100vh / 13759.29) calc(100vh / -70.4) 0 0 darken($bg-color, 3%);
+                            }
+                            .indicator::after {
+                                content: '';
+                                position: absolute;
+                                top: 48%;
+                                left: calc(100vw / 22.76);
+                                width: calc(100vw / 68.3);
+                                height: calc(100vh / 35.2);
+                                background: transparent;
+                                border-top-left-radius: calc(100vh / 35.2);
+                                box-shadow: calc(100vh / 13759.29) calc(100vh / -70.4) 0 0 darken($bg-color, 3%);
+                            }
+                        }
+                    }
+                }
+    
+    
+                .add-friend {
+                    grid-column: 3 / span 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    span {
+                        text-align: center;
+                        vertical-align: middle;
+                        justify-content: center;
+                        color: $text-color;
+                        font-size: calc(100vh / 44);
+                        transition: 0.1s;
+                        padding: calc(100vh / 35) calc(100vw / 12);
+                        background-color: lighten($bg-color, 10%);
+                        border: calc(100vh / 117) solid lighten($bg-color, 4%);
+                        border-radius: calc(100vh / 70.4);
+                        user-select: none;
+                        cursor: pointer;
+                    }
+                }
+
+                .add-friend-overlay {
+                    display: none;
+                    position: absolute;
+                    margin: 0;
+                    left: 0;
+                    top: 0;
+                    background-color: rgba(0, 0, 0, 0.4);
+                    width: 100vw;
+                    height: 100vh;
+                    overflow: hidden;
+                    grid-template-columns: calc(100vw / 2.834) calc(10vw / 3.38) calc(100vw / 2.85);
+                    grid-template-rows: calc(100vh / 3.48) calc(100vh / 5.96) calc(100vh / 1.87);
+                
+                    .add-friend-modal {
+                        grid-column: 2 / span 1;
+                        grid-row: 2 / span 1;
+                        position: relative;
+                        width: auto;
+                        height: auto;
+                        z-index: 1;
+                        background-color: transparent;
+                        
+                        .add-friend-modal-content {
+                            background-color: lighten($bg-color, 3%);
+                            margin: 0 0;
+                            padding: calc(100vh / 100.57) calc(100vw / 68.3) 0 calc(100vw / 68.3);
+                            border: calc(100vh / 352) solid darken($bg-color, 4%);
+                            border-radius: calc(100vh / 70.4);
+                            width: calc(100vw / 3.4);
+                            height: auto;
+                            
+                            .name {
+                                color: $text-color;
+                                font-size: calc(100vh / 28.16);
+                                padding: calc(100vh / 70.4) 0 calc(100vh / 140.8) 0;
+                            }
+                            
+                            .new-friend {
+                                display: inline-block;
+                                position: relative;
+                                width: calc(100vw / 5.46);
+                                height: calc(100vh / 23.46);
+                                padding: calc(100vh / 140.8);
+                                font-size: calc(100vh / 50.28);
+                                font-weight: 400;
+                                transition: 0.3s;
+                                background-color: lighten($bg-color, 13%);
+                                border: calc(100vh / 234.66) solid $bg-color;
+                                border-radius: calc(100vh / 176);
+                                color: $text-color;
+                            }
+                            .new-friend:focus {
+                                outline: none;
+                                transition: 0.3s;
+                                background-color: lighten($bg-color, 17%);
+                            }
+    
+                            .submit-new-friend {
+                                height: auto;
+                                margin: 0 0 calc(100vh / 46.9) calc(100vw / 273.2);
+                                padding: calc(100vh / 176) calc(100vw / 227.6);
+                                background-color: lighten($bg-color, 7%);
+                                border: calc(100vh / 234.66) solid $bg-color;
+                                border-radius: calc(100vh / 176);
+                                outline: none;
+                                font-size: calc(100vh / 44);
+                                font-weight: 400;
+                                color: darken($text-color, 15%);
+                            }
+                            .submit-new-friend:hover {
+                                background-color: lighten($bg-color, 3%);
+                                cursor: pointer;
+                            }
+                            .submit-new-friend:focus {
+                                background-color: $bg-color;
+                                cursor: pointer;
+                            }
+                            
+                            .existing-friend {
+                                display: none;
+                                background-color: #ffd6d6;
+                                border-style: solid;
+                                border-width: calc(100vh / 352) calc(100vh / 352) calc(100vh / 352) calc(100vh / 140.8);
+                                border-color: #dd565a #dd565a #dd565a #f00;
+                                padding: calc(100vh / 352) 0 calc(100vh / 352) calc(100vw / 136.6);
+                                margin-bottom: calc(100vw / 68.3);
+                            }
+                            .null-friend {
+                                display: none;
+                                background-color: #ffd6d6;
+                                border-style: solid;
+                                border-width: calc(100vh / 352) calc(100vh / 352) calc(100vh / 352) calc(100vh / 140.8);
+                                border-color: #dd565a #dd565a #dd565a #f00;
+                                padding: calc(100vh / 352) 0 calc(100vh / 352) calc(100vw / 136.6);
+                                margin-bottom: calc(100vw / 68.3);
+                            }
+                            
+                            .add-friend-closebtn {
+                                float: right;
+                                font-size: calc(100vh / 25.14);
+                                font-weight: bold;
+                                background-color: transparent;
+                                color: $text-color;
+                                border-style: none;
+                                width: calc(100vh / 35);
+                                height: calc(100vh / 17.6);
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    
+        .settings-overlay {
+            height: 0;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            background-color: darken($bg-color, 10%);
+            opacity: 0.9;
+            overflow-y: hidden;
+            transition: 0.3s;
+            
+            .settings-closebtn {
+                position: absolute;
+                top: 0;
+                right: calc(100vw / 54.64);
+                font-size: calc(100vh / 19.5);
+                margin-left: calc(100vw / 27.32);
+            }
+        }
+    }
+}
+*::selection {
+    background: $main-color;
+    color: $bg-color;
+}

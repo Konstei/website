@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--Home: Home Page
+    Profile: Profile Page
+    Messages: Contacts Page
+    Photos: On Profile Page
+    Settings: Sidenav Overlay
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+    <script type="text/javascript" defer>
+        function openNav() {
+            document.getElementById("my_nav").style.height = "100%";
+        }
+        
+        function closeNav() {
+            document.getElementById("my_nav").style.height = "0";
+            document.getElementById("settings").classList.remove('active');
+            document.getElementById("home").classList.add('active');
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="shortcut icon" href="favicons/home.svg" type="image/x-icon">
+    <title> Wonders of the Web </title>
+</head>
+<body>
+
+    <div class="page">
+        
+        
+        <div class="upper-page">
+            
+        </div>
+        
+        
+        
+        <div class="lower-page">
+            <div class="navbar-flexbox">
+                <div class="navigation">
+                    <ul>
+                        <li class="list active" id="home">
+                            <div>
+                                <span class="icon">
+                                    <ion-icon name="home-outline"></ion-icon>
+                                </span>
+                                <span class="text"> Home </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openMessages()">
+                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openMessages()"> Messages </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openPhotos()">
+                                    <ion-icon name="camera-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openPhotos()"> Photos </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openProfile()">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openProfile()"> Profile </span>
+                            </div>
+                        </li>
+                        <li class="list" id="settings">
+                            <div>
+                                <span class="icon" onclick="openNav()">
+                                    <ion-icon name="settings-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openNav()"> Settings </span>
+                            </div>
+                        </li>
+                        <div class="indicator"></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) =>
+            item.classList.remove('active'));
+            this.classList.add('active');
+        }
+        list.forEach((item) =>
+        item.addEventListener('click', activeLink));
+        
+        
+        function openProfile() {
+            setTimeout(() => { window.open("profile.html", "_self"); }, 500);
+        }
+        function openMessages() {
+            setTimeout(() => { window.open("messages.html", "_self"); }, 500);
+        }
+        function openPhotos() {
+            setTimeout(() => { window.open("photos.html", "_self") }, 500);
+        }
+    </script>
+
+
+
+    <div id="my_nav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
+        <div class="overlay-content">
+            <a href="#"> About </a>
+            <a href="#"> Services </a>
+            <a href="#"> Clients </a>
+            <a href="#"> Contact </a>
+        </div>
+    </div>
+
+</body>
+</html>

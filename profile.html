@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--Home: Home Page
+    Profile: Profile Page
+    Messages: Contacts Page
+    Photos: On Profile Page
+    Settings: Sidenav Overlay
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="profile.css">
+    <link rel="shortcut icon" href="favicons/profile.svg" type="image/x-icon">
+    <title> Profile </title>
+</head>
+<body>
+
+    <div class="page">
+
+
+        <div class="upper-page">
+
+        </div>
+
+
+
+
+
+        
+        <div class="lower-page">
+            <div class="navbar-flexbox">
+                <div class="navigation">
+                    <ul>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="gotoHome()">
+                                    <ion-icon name="home-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="gotoHome()"> Home </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openMessages()">
+                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openMessages()"> Messages </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openPhotos()">
+                                    <ion-icon name="camera-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openPhotos()"> Photos </span>
+                            </div>
+                        </li>
+                        <li class="list active" id="profile">
+                            <div>
+                                <span class="icon">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </span>
+                                <span class="text"> Profile </span>
+                            </div>
+                        </li>
+                        <li class="list" id="settings">
+                            <div>
+                                <span class="icon" onclick="openNav()">
+                                    <ion-icon name="settings-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openNav()"> Settings </span>
+                            </div>
+                        </li>
+                        <div class="indicator"></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) =>
+            item.classList.remove('active'));
+            this.classList.add('active');
+        }
+        list.forEach((item) =>
+        item.addEventListener('click', activeLink));
+        
+        
+        function gotoHome() {
+            setTimeout(() => { window.open("index.html", "_self"); }, 500);
+        }
+        function openMessages() {
+            setTimeout(() => { window.open("messages.html", "_self"); }, 500);
+        }
+        function openPhotos() {
+            setTimeout(() => { window.open("photos.html", "_self") }, 500);
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    
+
+
+
+
+    <div id="my_nav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
+        <div class="overlay-content">
+            <a href="#"> About </a>
+            <a href="#"> Services </a>
+            <a href="#"> Clients </a>
+            <a href="#"> Contact </a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById("my_nav").style.height = "100%";
+        }
+        
+        function closeNav() {
+            document.getElementById("my_nav").style.height = "0";
+            document.getElementById("settings").classList.remove('active');
+            document.getElementById("profile").classList.add('active');
+        }
+    </script>
+
+
+</body>
+</html>

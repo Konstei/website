@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+$bg-color: #222327;
+$main-color: #838692/*29fd53*/;
+$text-color: #a3a6af;
+$icon-color: #222327;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: $bg-color;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+
+
+    .page{
+        display: grid;
+        grid-template-columns: 100vw;
+        grid-template-rows: calc(100vh - 100px) 100px;
+
+        .upper-page {
+            grid-row: 1 / span 1;
+        }
+
+        
+        .lower-page {
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            
+            
+
+            .navbar-flexbox {
+                grid-column: 2 / span 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+
+                .navigation {
+                    grid-column: 2 / span 1;
+                    position: relative;
+                    width: 400px;
+                    height: 70px;
+                    background: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    
+                    ul {
+                        display: flex;
+                        width: 350px;
+                        
+                        li {
+                            position: relative;
+                            list-style: none;
+                            width: 70px;
+                            height: 70px;
+                            z-index: 1;
+                            
+                            div {
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-direction: column;
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                
+                                .icon {
+                                    position: relative;
+                                    display: block;
+                                    line-height: 75px;
+                                    font-size: 1.5em;
+                                    text-align: center;
+                                    transition: 0.5s;
+                                    color: $bg-color;
+                                }
+                                
+                                .text {
+                                    position: absolute;
+                                    color: $bg-color;
+                                    font-weight: 400;
+                                    font-size: 0.75em;
+                                    letter-spacing: 0.05em;
+                                    transition: 0.5s;
+                                    opacity: 0;
+                                    transform: translateY(20px);
+                                }
+                            }
+                            div:hover {
+                                cursor: pointer;
+                            }   
+                        }
+                
+                        li.active {
+                            div {
+                                .icon {
+                                    transform: translateY(-32px);
+                                }
+                                
+                                .text {
+                                    opacity: 1;
+                                    transform: translateY(11px);
+                                }
+                            }
+                        }
+                        
+                        li:nth-child(1).active ~ .indicator {
+                            transform: translateX(calc(70px * 0));
+                        }
+                        li:nth-child(2).active ~ .indicator {
+                            transform: translateX(calc(70px * 1));
+                        }
+                        li:nth-child(3).active ~ .indicator {
+                            transform: translateX(calc(70px * 2));
+                        }
+                        li:nth-child(4).active ~ .indicator {
+                            transform: translateX(calc(70px * 3));
+                        }
+                        li:nth-child(5).active ~ .indicator {
+                            transform: translateX(calc(70px * 4));
+                        }
+                        .indicator {
+                            position: absolute;
+                            top: -49%;
+                            width: 70px;
+                            height: 70px;
+                            background: $main-color;
+                            border-radius: 50%;
+                            border: 6px solid $bg-color;
+                            transition: 0.5s;
+                        }
+                        .indicator::before {
+                            content: '';
+                            position: absolute;
+                            top: 49%;
+                            left: -22px;
+                            width: 20px;
+                            height: 20px;
+                            background: transparent;
+                            border-top-right-radius: 20px;
+                            box-shadow: 1px -10px 0 0 $bg-color;
+                        }
+                        .indicator::after {
+                            content: '';
+                            position: absolute;
+                            top: 49%;
+                            right: -22px;
+                            width: 20px;
+                            height: 20px;
+                            background: transparent;
+                            border-top-left-radius: 20px;
+                            box-shadow: -1px -10px 0 0 $bg-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    
+
+
+    .overlay {
+        height: 0;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        background-color: darken($bg-color, 10%);
+        opacity: 0.9;
+        overflow-y: hidden;
+        transition: 0.3s;
+        
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+    }
+}
+
+
+
+
+@media screen and (max-height: 450px) {
+    .overlay .closebtn {
+        font-size: 20px;
+        top: 0px;
+        right: 17px;
+    }
+}

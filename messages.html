@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--Home: Home Page
+    Profile: Profile Page
+    Messages: Contacts Page
+    Photos: On Profile Page
+    Settings: Sidenav Overlay
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="scripts/jquery.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+    <script type="text/javascript" src="scripts/contacts_toggle.js" defer></script>
+    <script type="text/javascript" src="scripts/open_friend_modal.js" defer></script>
+    <script type="text/javascript" src="scripts/add_contact.js" defer></script>
+    <script type="text/javascript" src="scripts/send_message.js" defer></script>
+    <script type="text/javascript" src="scripts/upload_embed.js" defer></script>
+    <script type="text/javascript" src="scripts/delete_contact.js" defer></script>
+    <script type="text/javascript" defer>
+        function openNav() {
+            document.getElementById("my_nav").style.height = "100%";
+        }
+        
+        function closeNav() {
+            document.getElementById("my_nav").style.height = "0";
+            document.getElementById("settings").classList.remove('active');
+            document.getElementById("messages").classList.add('active');
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="messages.css">
+    <link rel="shortcut icon" href="favicons/messages.svg" type="image/x-icon">
+    <title> Messages </title>
+</head>
+<body>
+        
+    <div class="page">
+            
+
+        <div class="upper-page" id="upper_page">
+
+            <div class="contacts-section">
+                <div class="contact-header">
+                    <div> Contacts </div>
+                </div>
+
+                <div class="contact-list" id="contact_list">
+                    
+                </div>
+            </div>
+              
+
+            <div id="Friends" class="contact-content">
+
+                <div class="contact-name">
+                    <div> Friends </div>
+                </div>
+
+                <div class="messages" id="Friends_messages">
+                    <!-- <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="sent-message">sent</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span>
+                    <span class="some-message"><span class="recieved-message">recieved</span></span> -->
+                </div>
+
+                <div class="message-bar">
+
+                </div>
+    
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="lower-page">
+
+
+            <div class="remove-friend">
+                <span class="remove-friend-btn" id="remove_friend_btn" onclick="showDeleteBtns()"> - Remove Friend </span>
+            </div>
+
+
+            <div class="navbar-flexbox">
+                <div class="navigation">
+                    <ul>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="gotoHome()">
+                                    <ion-icon name="home-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="gotoHome()"> Home </span>
+                            </div>
+                        </li>
+                        <li class="list active" id="messages">
+                            <div>
+                                <span class="icon">
+                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                </span>
+                                <span class="text"> Messages </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openPhotos()">
+                                    <ion-icon name="camera-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openPhotos()"> Photos </span>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <div>
+                                <span class="icon" onclick="openProfile()">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openProfile()"> Profile </span>
+                            </div>
+                        </li>
+                        <li class="list" id="settings">
+                            <div>
+                                <span class="icon" onclick="openNav()">
+                                    <ion-icon name="settings-outline"></ion-icon>
+                                </span>
+                                <span class="text" onclick="openNav()"> Settings </span>
+                            </div>
+                        </li>
+                        <div class="indicator"></div>
+                    </ul>
+                </div>
+            </div>
+            
+            <script type="text/javascript" defer>
+                const list = document.querySelectorAll('.list');
+                function activeLink() {
+                    list.forEach((item) =>
+                    item.classList.remove('active'));
+                    this.classList.add('active');
+                }
+                list.forEach((item) =>
+                item.addEventListener('click', activeLink));
+                    
+                
+                function gotoHome() {
+                    setTimeout(() => { window.open("index.html", "_self") }, 500);
+                }
+                function openProfile() {
+                    setTimeout(() => { window.open("profile.html", "_self"); }, 500);
+                }
+                function openPhotos() {
+                    setTimeout(() => { window.open("photos.html", "_self") }, 500);
+                }
+            </script>
+
+            
+            
+            
+            <div class="add-friend">
+                <span id="add_friend_btn"> + Add Friend </span>
+            </div>
+            
+            <div id="add_friend" class="add-friend-overlay">
+                <div class="add-friend-modal">
+                    <div class="add-friend-modal-content">
+                        <button class="add-friend-closebtn"> &times; </button>
+                        <p class="name"> Name </p>
+                        <input type="text" class="new-friend" id="new_friend" placeholder="New Friend Id" maxlength="88">
+                        <button class="submit-new-friend" id="submit_new_friend"> Submit </button>
+                        <p class="existing-friend" id="existing_friend"> &times; You cannot have multiple existing id's! </p>
+                        <p class="null-friend" id="null_friend"> &times; An id cannot be null! </p>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    
+
+    <div id="my_nav" class="settings-overlay">
+        <a href="javascript:void(0)" class="settings-closebtn" onclick="closeNav()"> &times; </a>
+        <div class="settings-overlay-content">
+            <a href="#"> About </a>
+            <a href="#"> Services </a>
+            <a href="#"> Clients </a>
+            <a href="#"> Contact </a>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
